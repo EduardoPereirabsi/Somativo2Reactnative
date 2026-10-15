@@ -1,6 +1,10 @@
 {
   "extends": "expo/tsconfig.base",
   "compilerOptions": {
-    "strict": true
+    "strict": true,
+    // O TypeScript 6 deixou de carregar todos os pacotes @types sozinho.
+    // `jest` tipa describe/it/expect nos testes; `node` tipa o require()
+    // usado nos dubles do jest.setup.ts.
+    "types": ["jest", "node"]
   }
 }

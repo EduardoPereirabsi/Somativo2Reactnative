@@ -25,9 +25,16 @@ Run lint and typecheck before declaring any task done.
 
 ## Navigation & Routing
 
-- Use **Expo Router** for all navigation. Routes live in `src/app/` — every file there is a screen, `_layout.tsx` files define navigators. Keep non-route code (components, hooks, utils) outside `src/app/`.
-- Import `Link`, `router`, and `useLocalSearchParams` from `expo-router`.
-- Docs: https://docs.expo.dev/router/introduction.md
+- This project uses **React Navigation** (`@react-navigation/native-stack` + `@react-navigation/bottom-tabs`), not Expo Router. The assignment requires native-stack, `route.params` and `navigation.setOptions`, so do not migrate to Expo Router.
+- Navigators live in `src/navigation/RootNavigator.tsx`; param lists are typed in `src/navigation/types.ts`.
+- Auth gating is conditional rendering: `RootNavigator` shows the auth stack or the app stack from `AuthContext` state. Never `navigate('Login')` on logout.
+- Docs: https://reactnavigation.org/docs/getting-started
+
+## Project checks
+
+```bash
+npm run verify   # tsc --noEmit + expo lint + jest
+```
 
 ## Building with EAS
 
