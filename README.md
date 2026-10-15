@@ -94,8 +94,8 @@ cp .env.example .env
 npx expo start -c
 ```
 
-A tela de login passa a mostrar "Autenticação real (Supabase)". As chaves **não ficam no
-repositório**: o `.env` está no `.gitignore`, e o código as lê como
+Cadastro e login passam a usar o Supabase Auth, e a coleção sincroniza na nuvem.
+As chaves **não ficam no repositório**: o `.env` está no `.gitignore`, e o código as lê como
 `process.env.EXPO_PUBLIC_SUPABASE_URL` / `process.env.EXPO_PUBLIC_SUPABASE_KEY`
 (`src/services/supabase.ts`). Sem elas, o cliente Supabase simplesmente não é
 criado e o app opera 100% local — quem clonar o repositório consegue usar tudo

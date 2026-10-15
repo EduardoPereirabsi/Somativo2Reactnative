@@ -26,7 +26,7 @@ import { colors, spacing } from '../theme/colors';
  * AuthContext muda de estado e o RootNavigator troca de Stack sozinho.
  */
 export function LoginScreen({ navigation }: AuthScreenProps<'Login'>) {
-  const { signIn, busy, error, isCloud, clearError } = useAuth();
+  const { signIn, busy, error, clearError } = useAuth();
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
   const [hidden, setHidden] = useState(true);
@@ -52,7 +52,6 @@ export function LoginScreen({ navigation }: AuthScreenProps<'Login'>) {
 
           <TextField
             label="E-mail"
-            placeholder="voce@exemplo.com"
             value={email}
             onChangeText={setEmail}
             keyboardType="email-address"
@@ -100,12 +99,6 @@ export function LoginScreen({ navigation }: AuthScreenProps<'Login'>) {
               navigation.navigate('Register');
             }}
           />
-
-          <Text style={styles.mode}>
-            {isCloud
-              ? 'Autenticação real (Supabase) — seus dados sincronizam na nuvem.'
-              : 'Modo local — contas e dados ficam salvos neste aparelho.'}
-          </Text>
         </ScrollView>
       </KeyboardAvoidingView>
     </SafeAreaView>
@@ -122,5 +115,4 @@ const styles = StyleSheet.create({
   passwordInput: { paddingRight: 52 },
   reveal: { position: 'absolute', right: 4, bottom: 2 },
   error: { color: colors.danger, fontSize: 15 },
-  mode: { color: colors.textMuted, fontSize: 13, textAlign: 'center', marginTop: spacing.sm },
 });
